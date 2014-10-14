@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/nrpatten/node-tip-bot"
+    "url": "git://github.com/nrpatten/node-tip-bot.git"
   },
   "author": "NRPatten",
   "license": "MIT",
