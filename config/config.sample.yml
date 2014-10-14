@@ -1,0 +1,154 @@
+connection: 
+  host: irc.freenode.net
+  port: 6697
+  secure: true
+  status_command: ACC
+  debug: false
+login: 
+  nickname: TipBot
+  username: TipBot
+  realname: node.js rpc tipping bot
+  nickserv_password: yourpass
+channels: 
+  - '#BotChannel'
+log:
+  file: bot.log
+rpc:
+  host: localhost
+  port: rpc-port
+  user: rpc-username
+  pass: rpc-password
+coin:
+  withdrawal_fee: 2 
+  min_withdraw: 10
+  min_confirmations: 3
+  min_tip: 1
+  short_name: coin-shortname
+  full_name: coin-name
+webadmin:
+  enabled: false
+  port: 8080
+  users:
+  admin: your-pasword
+urlget:
+  enabled: true
+joke:
+  enabled: true
+  url: http://api.icndb.com/jokes/random
+random:
+  enabled: true
+  url: http://www.iheartquotes.com/api/v1/random?format=json&max_lines=1
+allcoin:
+  enabled: true
+  coin: DRS
+  url: https://www.allcoin.com/api2/pair/DRS_BTC
+btc:
+  enabled: true
+  coin: BTC
+  url: https://btc-e.com/api/3/ticker/btc_usd
+cryptsy:
+  enabled: true
+  coin: FST
+  url: http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=44
+commands:
+  commands:
+    pm: true
+    channel: false
+  help:
+    pm: false
+    channel: true
+  tip:
+    pm: false
+    channel: true 
+  joke:
+    pm: false
+    channel: true
+  random:
+    pm: false
+    channel: true
+  ticker:
+    pm: false
+    channel: true
+  ticker2:
+    pm: false
+    channel: true
+  btc:
+    pm: false
+    channel: true
+  rain: 
+    pm: false
+    channel: true      
+  balance:
+    pm: false
+    channel: true
+  withdraw:
+    pm: false
+    channel: true
+  address:
+    pm: fales
+    channel: true
+  terms:
+    pm: false
+    channel: true
+  block:
+    pm: false
+    channel: true
+  diff:
+    pm: false
+    channel: true
+  networkhps:
+    pm: false
+    channel: true
+  info:
+    pm: false
+    channel: true        
+messages:
+  ticker: '%name% The current %coin% price at AllCoin. %coin%/BTC: %trade_price% - Volume: BTC: %exchange_volume% - DRS: %type_volume%'
+  ticker2: '%name% The current %coin% price at Cryptsy. %coin%/BTC: %price% - Volume: %volume%'
+  btc: '%name% The current %coin% price at BTC-e. BTC: $%price_dollar% - Volume: %volume% BTC'
+  joke: '%name% - %joke%'
+  random: '%name% - %random%'
+  error: 'Sorry %name%, something went wrong.'
+  no_funds: "Sorry %name%, you don't have enough funds (you're %short%%short_name% short)"
+  not_identified: '%name%: You need to be identified with NickServ to tip.'
+  tipped: '%from% tipped %to% %amount%%short_name%! "/msg %nick% commands" to claim.'
+  balance: '%name% has %balance% %short_name%.'
+  balance_unconfirmed: '%name% has %balance% %short_name% (unconfirmed: %unconfirmed% %short_name%)'
+  deposit_address: '%name%, your deposit address is %address%'
+  withdraw_too_small: 'Sorry %name%, you need to withdraw at least %min_withdraw%%short_name% (you have %balance%%short_name%)'
+  invalid_address: 'Sorry %name%, the address you specified is invalid (%address%).'
+  tip_too_small: 'Sorry %from%, your tip to %to% (%amount%%short_name%) is too small (min. %min_tip%%short_name%).'
+  rain_too_small: 'Sorry %from%, your rain (%amount%%short_name%) is too small (min. %min_rain%%short_name%). Increase the value or decrease max wet users.' 
+  tip_self: "Sorry %name%, you can't tip yourself!"
+  invalid_amount: 'Sorry %name%, "%amount%" is not a correct amount.'
+  rain: '%name% rained %amount%%short_name% upon %list%.' 
+  getdiff: 'Current Difficulty: %diff%'
+  networkhps: 'Current Networkhps: %networkhps% Mh/s'
+  getblock: 'Current Block: %block%'
+  info: 'Current Networkhps: %networkhps% Mh/s - Current Difficulty: %diff% - Current Block: %block%'
+  withdraw_success: 
+    - '%name%: %amount%%short_name% has been withdrawn from your account to %address%'
+    - 'You have been charged %withdrawal_fee%%short_name% withdrawal fee.'
+    - 'Transaction %transaction% completed.'
+  help:
+    - 'Plaese type /msg %nick% commands'
+  commands:
+    - 'You can use following commands:'
+    - '!balance - displays your current wallet balance'
+    - '!address - displays %full_name% address where you can send your funds to the tip bot'
+    - '!withdraw <%full_name% address> - withdraws your whole wallet balance to specified address (you will be charged %withdrawal_fee%%short_name% withdrawal fee)'
+    - '!tip <nick> <amount> - sends the specified amount of %full_name% to the specified nickname'
+    - '!rain <amount> [max] - splits amount coins between max users or the whole channel'
+    - '!diff - displays the current network difficulty'
+    - '!networkhps - displays the current network hashpersec'    
+    - '!block - displays the current network block'
+    - '!info - displays the current network hashpersec, difficulty, block'
+    - '!ticker - displays the current AllCoin Coin Price/Volume'
+    - '!ticker2 - displays the current Cryptsy Coin Price/Volume'
+    - '!btc - displays the current BTC-e BitCoin Price/Volume'
+    - '!joke - displays a joke'
+    - '!random - displays a random quote'
+    - '!terms - displays terms and conditions for using %nick%'
+  terms:
+    - 'There are no fees to use %nick%, with the exception of %withdrawal_fee%%short_name% fee on withdrawals.'
+    - 'Warning: This service is provided "as is" without warranty of any kind, either express or implied, including, without limitation, the implied warranties of merchantability, fitness for a particular purpose, non-infringement, error-free or uninterrupted service. You are using this service at your own risk; in addition, the coins in your account are only as secure as your IRC account is. Do not hold large sums of coins here; simply withdraw or tip others.'
