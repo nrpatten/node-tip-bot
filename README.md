@@ -55,33 +55,33 @@ Basic coin settings.
 
 ## urlget
 Enable or Disable the bot from responding to URL's typed in the channel.
-Options  `enabled: true or false`
+* **Options** - `enabled: true or false`
 
 ## joke
-Enable or Disable the bot from saying a joke with the !joke command
-Options `enabled: true or false`
+Enable or Disable the bot from saying a joke with the !joke command.
+* **Options** - `enabled: true or false`
 
 ## random
-Enable or Disable the bot from saying a random quote with the !random command
-Options `enabled: true or false`
+Enable or Disable the bot from saying a random quote with the !random command.
+* **Options** - `enabled: true or false`
 
 ## allcoin
-Enable or Disable the bot from saying your Allcoin coin price with !ticker
-Options:
+Enable or Disable the bot from saying your Allcoin coin price with !ticker.
+* **Options** -
 `enabled: true or false`
 `coin: DRS` Your coins short name
 `url: https://www.allcoin.com/api2/pair/DRS_BTC` Your coins Allcoin link
 
 ## cryptsy
-Enable or Disable the bot from saying your Cryptsy coin price with !ticker2
-Options:
+Enable or Disable the bot from saying your Cryptsy coin price with !ticker2.
+* **Options**
 `enabled: true or false`
 `coin: FST` Your coins short name
 `url: http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=44` Your coins Cryptsy link
 
 ## btc
-Enable or Disable the bot from saying btc price ticker with !btc
-Options:
+Enable or Disable the bot from saying btc price ticker with !btc.
+* **Options**
 `enabled: true or false`
 
 ## commands
