@@ -5,7 +5,6 @@ git clone https://github.com/nrpatten/node-tip-bot
 cd node-tip-bot
 npm install
 ```
-After installation proceed to the configuration.
 
 # Configuration
 To configure, copy the `config/config.sample.yml` file to `config/config.yml`.
@@ -53,6 +52,37 @@ Basic coin settings.
 * **min_rain** - minimum amount of coins to make rain
 * **short_name** - short coin's name (eg. `LTC`)
 * **full_name** - full coin's name (eg. `Litecoin`)
+
+## urlget
+Enable or Disable the bot from responding to URL's typed in the channel.
+Options  `enabled: true or false`
+
+## joke
+Enable or Disable the bot from saying a joke with the !joke command
+Options `enabled: true or false`
+
+## random
+Enable or Disable the bot from saying a random quote with the !random command
+Options `enabled: true or false`
+
+## allcoin
+Enable or Disable the bot from saying your Allcoin coin price with !ticker
+Options:
+`enabled: true or false`
+`coin: DRS` Your coins short name
+`url: https://www.allcoin.com/api2/pair/DRS_BTC` Your coins Allcoin link
+
+## cryptsy
+Enable or Disable the bot from saying your Cryptsy coin price with !ticker2
+Options:
+`enabled: true or false`
+`coin: FST` Your coins short name
+`url: http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=44` Your coins Cryptsy link
+
+## btc
+Enable or Disable the bot from saying btc price ticker with !btc
+Options:
+`enabled: true or false`
 
 ## commands
 Here you can restrict some commands to work only on PM/channel.
