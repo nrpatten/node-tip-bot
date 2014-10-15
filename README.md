@@ -73,14 +73,14 @@ Enable or Disable the bot from saying your Allcoin coin price with !ticker.
 * Options -
  * `enabled: true or false`
  * `coin: DRS` Your coins short name
- * `url: https://www.allcoin.com/api2/pair/DRS_BTC` Your coins Allcoin link
+ * `url: https://www.allcoin.com/api2/pair/DRS_BTC` Your coins Allcoin api link
 
 ## cryptsy
 Enable or Disable the bot from saying your Cryptsy coin price with !ticker2.
 * Options - 
  * `enabled: true or false`
  * `coin: FST` Your coins short name 
- * `url: http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=44` Your coins Cryptsy link
+ * `url: http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=44` Your coins Cryptsy api link
 
 ## btc
 Enable or Disable the bot from saying btc price ticker with !btc.
@@ -110,22 +110,25 @@ rpcallowip=<your bot's ip address or just 127.0.0.1 if hosted on the same machin
 To run the bot simply use `node bin/tipbot` or `npm start`.
 
 IF you ger this error:
-```
+```bash
 npm WARN This failure might be due to the use of legacy binary "node"
 npm WARN For further explanations, please read
 /usr/share/doc/nodejs/README.Debian
 ```
 Run:
-```
+```bash
 sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install python-software-properties python g++ make nodejs
 ```
 
 ## Edits
-To change the ticker for your coin edit `config/config.yml` line `39 - 50` and add your own Cryptsy, AllCoin and BTC-e coin ticker link.
-Currently only supports Cryptsy, AllCoin and BTC-e.
-See `config/config.yml` line `33 - 50`, `61 -75`, `104 -108` and bin/tipbot.js `267` to `351` to add your own exchange json.
+* To change the ticker for your coin edit -
+ * `config/config.yml` line `39 - 50`
+ * And add your own Cryptsy, AllCoin and BTC-e coin ticker link.
+* Currently only supports Cryptsy, AllCoin and BTC-e.
+ * See `config/config.yml` line `33 - 50`, `61 -75`, `104 -108`
+ * And bin/tipbot.js `267` to `351` to add your own exchange json.
 
 ## Commands
 
