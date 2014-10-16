@@ -101,7 +101,10 @@ commands:
     channel: true
   info:
     pm: false
-    channel: true        
+    channel: true
+  bot:
+    pm: false
+    channel: true
 messages:
   ticker: '%name% The current %coin% price at AllCoin. %coin%/BTC: %trade_price% - Volume: BTC: %exchange_volume% - %coin%: %type_volume%'
   ticker2: '%name% The current %coin% price at Cryptsy. %coin%/BTC: %price% - Volume: %volume%'
@@ -126,6 +129,8 @@ messages:
   networkhps: 'Current Networkhps: %networkhps% Mh/s'
   getblock: 'Current Block: %block%'
   info: 'Current Networkhps: %networkhps% Mh/s - Current Difficulty: %diff% - Current Block: %block%'
+  bot:
+    - '%nick% is a Node.js TipBot made by nrpatten and available at https://github.com/nrpatten/node-tip-bot'
   withdraw_success: 
     - '%name%: %amount% %short_name% has been withdrawn from your account to %address%'
     - 'You have been charged %withdrawal_fee% %short_name% withdrawal fee.'
