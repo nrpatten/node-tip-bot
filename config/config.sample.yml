@@ -126,9 +126,13 @@ messages:
   invalid_amount: 'Sorry %name%, "%amount%" is not a correct amount.'
   rain: '%name% rained %amount% %short_name% upon %list%.' 
   getdiff: 'Current Difficulty: %diff%'
-  networkhps: 'Current Networkhps: %networkhps% Mh/s'
+  networkhps: 'Current Networkhps: %networkhps% Kh/s'
+  networmhps: 'Current Networkhps: %networkhps% Mh/s'
+  networghps: 'Current Networkhps: %networkhps% Gh/s'
   getblock: 'Current Block: %block%'
-  info: 'Current Networkhps: %networkhps% Mh/s - Current Difficulty: %diff% - Current Block: %block%'
+  infok: 'Current Networkhps: %networkhps% Kh/s - Current Difficulty: %diff% - Current Block: %block%'
+  infom: 'Current Networkhps: %networkhps% Mh/s - Current Difficulty: %diff% - Current Block: %block%'
+  infog: 'Current Networkhps: %networkhps% Gh/s - Current Difficulty: %diff% - Current Block: %block%'
   bot:
     - '%nick% is a Node.js TipBot made by nrpatten and available at https://github.com/nrpatten/node-tip-bot'
   withdraw_success: 
