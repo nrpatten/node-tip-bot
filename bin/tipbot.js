@@ -198,7 +198,7 @@ client.addListener('message', function(from, channel, message) {
   if(channel == client.nick) channel = from;
 
   // comands that don't require identifying
-  if(command == 'help' || command == 'terms' || command == 'commands')
+  if(command == 'help' || command == 'terms' || command == 'commands' || command == 'bot')
   {
     for(var i = 0; i < settings.messages[command].length; i++) {
       var message = settings.messages[command][i];
