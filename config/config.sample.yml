@@ -103,7 +103,7 @@ commands:
     pm: false
     channel: true        
 messages:
-  ticker: '%name% The current %coin% price at AllCoin. %coin%/BTC: %trade_price% - Volume: BTC: %exchange_volume% - DRS: %type_volume%'
+  ticker: '%name% The current %coin% price at AllCoin. %coin%/BTC: %trade_price% - Volume: BTC: %exchange_volume% - %coin%: %type_volume%'
   ticker2: '%name% The current %coin% price at Cryptsy. %coin%/BTC: %price% - Volume: %volume%'
   btc: '%name% The current %coin% price at BTC-e. BTC: $%price_dollar% - Volume: %volume% BTC'
   joke: '%name% - %joke%'
@@ -150,5 +150,5 @@ messages:
     - '!random - displays a random quote'
     - '!terms - displays terms and conditions for using %nick%'
   terms:
-    - 'There are no fees to use %nick%, with the exception of %withdrawal_fee%%short_name% fee on withdrawals.'
+    - 'There are no fees to use %nick%, with the exception of %withdrawal_fee% %short_name% fee on withdrawals.'
     - 'Warning: This service is provided "as is" without warranty of any kind, either express or implied, including, without limitation, the implied warranties of merchantability, fitness for a particular purpose, non-infringement, error-free or uninterrupted service. You are using this service at your own risk; in addition, the coins in your account are only as secure as your IRC account is. Do not hold large sums of coins here; simply withdraw or tip others.'
