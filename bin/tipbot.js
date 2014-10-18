@@ -63,7 +63,7 @@ coin.getBalance(function(err, balance) {
   }
 
   var balance = typeof(balance) == 'object' ? balance.result : balance;
-  winston.info('Connected to JSON RPC API. Current total balance is %d' + settings.coin.short_name, balance);
+  winston.info('Connected to JSON RPC API. Current total balance is %d ' + settings.coin.short_name, balance);
 })
 
 // run webadmin
