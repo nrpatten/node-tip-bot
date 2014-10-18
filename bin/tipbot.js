@@ -30,6 +30,7 @@ var random = (settings.random.url);
 // Ticker Options/Market URL change URL in config.yml
 var allcoin = (settings.allcoin.url);
 var allcoin2 = (settings.allcoin2.url);
+var cryptsy = (settings.cryptsy.url);
 var btce = (settings.btc.url);
 var bittrex = (settings.bittrex.url);
 var bittrex2 = (settings.bittrex2.url);
@@ -319,13 +320,13 @@ client.addListener('message', function(from, channel, message) {
           var user = from.toLowerCase();
           tipbot.sendCustomRequest(cryptsy, function(data, err) {
            if(err) {
-            winston.error('Error in !ticker2 command.', err);
+            winston.error('Error in !cryptsy command.', err);
             client.say(channel, settings.messages.error.expand({name: from}));
            return;
           }
           var info = data;
           winston.info(user, 'Fetched Price From Cryptsy', info.return.markets.FST.lasttradeprice, info.return.markets.FST.volume);
-          client.say(channel, settings.messages.ticker2.expand({name: user, coin: settings.cryptsy.coin, price: info.return.markets.FST.lasttradeprice, volume: info.return.markets.FST.volume}));
+          client.say(channel, settings.messages.cryptsy.expand({name: user, coin: settings.cryptsy.coin, price: info.return.markets.FST.lasttradeprice, volume: info.return.markets.FST.volume}));
           });
           } else {
          return;
