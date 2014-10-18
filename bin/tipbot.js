@@ -29,8 +29,10 @@ var random = (settings.random.url);
 
 // Ticker Options/Market URL change URL in config.yml
 var allcoin = (settings.allcoin.url);
+var allcoin2 = (settings.allcoin2.url);
 var btce = (settings.btc.url);
-var cryptsy = (settings.cryptsy.url);
+var bittrex = (settings.bittrex.url);
+var bittrex2 = (settings.bittrex2.url);
 
 // load winston's cli defaults
 winston.cli();
@@ -287,7 +289,32 @@ client.addListener('message', function(from, channel, message) {
           }
         })
         break;
-      case 'ticker2':
+      case 'ticker':
+        if(settings.allcoin.enabled) {
+          var match = message.match(/^.?ticker (\S+)$/);
+          if(match === null) {
+              var user = from.toLowerCase();
+              tipbot.sendCustomRequest(allcoin, function(data) {
+              var info = data;
+              client.say(channel, settings.messages.ticker.expand({name: user, coin: settings.allcoin.coin, trade_price: info.data.trade_price, exchange_volume: info.data.exchange_volume, type_volume: info.data.type_volume}));
+              });
+          } else {
+          var user = from.toLowerCase();
+          var str = match[1];
+          tipbot.sendCustomRequest(allcoin2 + str + '_BTC', function(data, error) {
+          var info = data;
+             if(error || info.code === 0) {
+               client.say(channel, settings.messages.tickererr.expand({name: user, coin: str}));
+             return;
+             }
+               client.say(channel, settings.messages.ticker.expand({name: user, coin: str, trade_price: info.data.trade_price, exchange_volume: info.data.exchange_volume, type_volume: info.data.type_volume}));
+            });
+          }
+           } else {
+          return;
+        }
+        break;
+      case 'cryptsy':
         if(settings.cryptsy.enabled) {
           var user = from.toLowerCase();
           tipbot.sendCustomRequest(cryptsy, function(data, err) {
@@ -299,23 +326,6 @@ client.addListener('message', function(from, channel, message) {
           var info = data;
           winston.info(user, 'Fetched Price From Cryptsy', info.return.markets.FST.lasttradeprice, info.return.markets.FST.volume);
           client.say(channel, settings.messages.ticker2.expand({name: user, coin: settings.cryptsy.coin, price: info.return.markets.FST.lasttradeprice, volume: info.return.markets.FST.volume}));
-          });
-          } else {
-         return;
-        }
-        break;
-      case 'ticker':
-        if(settings.allcoin.enabled) {
-          var user = from.toLowerCase();
-          tipbot.sendCustomRequest(allcoin, function(data, err) {
-           if(err) {
-            winston.error('Error in !ticker command.', err);
-            client.say(channel, settings.messages.error.expand({name: from}));
-           return;
-          }
-          var info = data;
-          winston.info(user, 'Fetched Price From AllCoin', info.data.trade_price, info.data.exchange_volume, info.data.type_volume);
-          client.say(channel, settings.messages.ticker.expand({name: user, coin: settings.allcoin.coin, trade_price: info.data.trade_price, exchange_volume: info.data.exchange_volume, type_volume: info.data.type_volume}));
           });
           } else {
          return;
@@ -336,6 +346,31 @@ client.addListener('message', function(from, channel, message) {
           });
           } else {
          return;
+        }
+        break;
+      case 'bittrex':
+        if(settings.bittrex.enabled) {
+          var match = message.match(/^.?bittrex (\S+)$/);
+          if(match === null) {
+              var user = from.toLowerCase();
+              tipbot.sendCustomRequest(bittrex, function(data) {
+              var info = data;
+              client.say(channel, settings.messages.bittrex.expand({name: user, coin: settings.bittrex.coin, last: info.result[0].Last.toFixed(8), basevolume: info.result[0].BaseVolume.toFixed(8), volume: info.result[0].Volume}));
+              });
+          } else {
+          var user = from.toLowerCase();
+          var str = match[1];
+          tipbot.sendCustomRequest(bittrex2 + 'BTC-' + str, function(data, error) {
+          var info = data;
+             if(error || info.success === false) {
+               client.say(channel, settings.messages.bittrexerr.expand({name: user, coin: str}));
+             return;
+             }
+               client.say(channel, settings.messages.bittrex.expand({name: user, coin: str, last: info.result[0].Last.toFixed(8), basevolume: info.result[0].BaseVolume.toFixed(8), volume: info.result[0].Volume}));
+            });
+          }
+           } else {
+          return;
         }
         break;
       case 'joke':
