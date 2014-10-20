@@ -29,7 +29,7 @@ webadmin:
   enabled: false
   port: 8080
   users:
-  admin: your-pasword
+    admin: your-pasword
 urlget:
   enabled: true
 joke:

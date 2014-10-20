@@ -11,7 +11,7 @@
     "swig": "^1.3.2",
     "express": "4.9.7",
     "node-tipbot-api": "0.0.4",
-    "request": "2.45.0",
+    "request": "3.4.8",
     "node-regexp": "0.1.1",
     "cheerio": "0.17.0"
   },
