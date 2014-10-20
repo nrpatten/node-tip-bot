@@ -147,23 +147,22 @@ sudo apt-get install python-software-properties python g++ make nodejs
 
 ## Commands
 
-| **Command** | **Arguments**     | **Description**
-|-------------|-------------------|--------------------------------------------------------------------
-| `balance`   |                   | displays your current wallet balance
-| `address`   |                   | displays address where you can send your funds to the tip bot
-| `withdraw`  | `<address>`       | withdraws your whole wallet balance to specified address
-| `tip`       | `<nick> <amount>` | sends the specified amount of coins to the specified nickname
-| `rain`      | `<amount> [max]`  | sends the specified amount of coins to the channel
-| `networkhps`|                   | displays the current network hashpersec with auto speed switch for Kh/s,Mh/s,Gh/s
-| `diff`      |                   | displays the current network difficulty
-| `block`     |                   | displays the current network block
-| `info`      |                   | displays the current network hashpersec/difficulty/block auto switch
-| `ticker`    |                   | displays the current Allcoin coin price (use a Var, !ticker DOPE)
-| `bittrex`   |                   | displays the current BitTrex coin price (use a Var, !bittrex CANN)
-| `cryptsy`   |                   | displays the current Crypsty coin price
-| `btc`       |                   | displays the current BTC-e BTC price
-| `joke`      |                   | displays a random joke
-| `random`    |                   | displays a random quote
-| `help`      |                   | displays configured help message (by default similiar to this one)
-| `terms`     |                   | displays terms and conditions for using the tip bot
-
+| **Command** | **Arguments**     | **Description**                                                                   |
+|-------------|-------------------|-----------------------------------------------------------------------------------|
+| `balance`   |                   | displays your current wallet balance                                              |
+| `address`   |                   | displays address where you can send your funds to the tip bot                     |
+| `withdraw`  | `<address>`       | withdraws your whole wallet balance to specified address                          |
+| `tip`       | `<nick> <amount>` | sends the specified amount of coins to the specified nickname                     |
+| `rain`      | `<amount> [max]`  | sends the specified amount of coins to the channel                                |
+| `networkhps`|                   | displays the current network hashpersec with auto speed switch for Kh/s,Mh/s,Gh/s |
+| `diff`      |                   | displays the current network difficulty                                           |
+| `block`     |                   | displays the current network block                                                |
+| `info`      |                   | displays the current network hashpersec/difficulty/block auto switch              |
+| `ticker`    | `<coin> or none`  | displays the current Allcoin coin price use an arg, (!ticker DOPE)                |
+| `bittrex`   | `<coin> or none`  | displays the current BitTrex coin price use an arg, (!bittrex CANN)               |
+| `cryptsy`   |                   | displays the current Crypsty coin price                                           | 
+| `btc`       |                   | displays the current BTC-e BTC price                                              |
+| `joke`      |                   | displays a random joke                                                            | 
+| `random`    |                   | displays a random quote                                                           |
+| `help`      |                   | displays configured help message (by default similiar to this one)                |
+| `terms`     |                   | displays terms and conditions for using the tip bot                               |
