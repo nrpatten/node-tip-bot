@@ -29,7 +29,7 @@ webadmin:
   enabled: false
   port: 8080
   users:
-  admin: your-pasword
+    admin: your-pasword
 urlget:
   enabled: true
 joke:
@@ -40,8 +40,10 @@ random:
   url: http://www.iheartquotes.com/api/v1/random?format=json&max_lines=1
 allcoin:
   enabled: true
-  coin: DRS
-  url: https://www.allcoin.com/api2/pair/DRS_BTC
+  coin: DOPE
+  url: https://www.allcoin.com/api2/pair/DOPE_BTC
+allcoin2:
+  url: https://www.allcoin.com/api2/pair/
 btc:
   enabled: true
   coin: BTC
@@ -50,6 +52,12 @@ cryptsy:
   enabled: true
   coin: FST
   url: http://pubapi.cryptsy.com/api.php?method=singlemarketdata&marketid=44
+bittrex:
+  enabled: true
+  coin: DOPE
+  url: https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-dope
+bittrex2:
+  url: https://bittrex.com/api/v1.1/public/getmarketsummary?market=
 commands:
   commands:
     pm: true
@@ -69,7 +77,10 @@ commands:
   ticker:
     pm: false
     channel: true
-  ticker2:
+  cryptsy:
+    pm: false
+    channel: true
+  bittrex:
     pm: false
     channel: true
   btc:
@@ -107,14 +118,17 @@ commands:
     channel: true
 messages:
   ticker: '%name% The current %coin% price at AllCoin. %coin%/BTC: %trade_price% - Volume: BTC: %exchange_volume% - %coin%: %type_volume%'
-  ticker2: '%name% The current %coin% price at Cryptsy. %coin%/BTC: %price% - Volume: %volume%'
+  tickererr: '%name% There was an error in the request either the AIP is down or %coin% dose not exist on AllCoin'
+  cryptsy: '%name% The current %coin% price at Cryptsy. %coin%/BTC: %price% - Volume: %volume%'
+  bittrex: '%name% The current %coin% price at BitTrex. %coin%/BTC: %last% - Volume: BTC: %basevolume% - %coin%: %volume%'
+  bittrexerr: '%name% There was an error in the request either the AIP is down or %coin% dose not exist on BitTrex'
   btc: '%name% The current %coin% price at BTC-e. BTC: $%price_dollar% - Volume: %volume% BTC'
   joke: '%name% - %joke%'
   random: '%name% - %random%'
   error: 'Sorry %name%, something went wrong.'
   no_funds: "Sorry %name%, you don't have enough funds (you're %short% %short_name% short)"
-  not_identified: '%name%: You need to be identified with NickServ to tip.'
-  tipped: '%from% tipped %to% %amount%%short_name%! "/msg %nick% commands" to claim.'
+  not_identified: '%name%: You need to be identified with NickServ to use this command.'
+  tipped: '%from% tipped %to% %amount% %short_name%! "/msg %nick% commands" to claim.'
   balance: '%name% has %balance% %short_name%.'
   balance_unconfirmed: '%name% has %balance% %short_name% (unconfirmed: %unconfirmed% %short_name%)'
   deposit_address: '%name%, your deposit address is %address%'
@@ -126,9 +140,13 @@ messages:
   invalid_amount: 'Sorry %name%, "%amount%" is not a correct amount.'
   rain: '%name% rained %amount% %short_name% upon %list%.' 
   getdiff: 'Current Difficulty: %diff%'
-  networkhps: 'Current Networkhps: %networkhps% Mh/s'
+  networkhps: 'Current Networkhps: %networkhps% Kh/s'
+  networmhps: 'Current Networkhps: %networkhps% Mh/s'
+  networghps: 'Current Networkhps: %networkhps% Gh/s'
   getblock: 'Current Block: %block%'
-  info: 'Current Networkhps: %networkhps% Mh/s - Current Difficulty: %diff% - Current Block: %block%'
+  infok: 'Current Networkhps: %networkhps% Kh/s - Current Difficulty: %diff% - Current Block: %block%'
+  infom: 'Current Networkhps: %networkhps% Mh/s - Current Difficulty: %diff% - Current Block: %block%'
+  infog: 'Current Networkhps: %networkhps% Gh/s - Current Difficulty: %diff% - Current Block: %block%'
   bot:
     - '%nick% is a Node.js TipBot made by nrpatten and available at https://github.com/nrpatten/node-tip-bot'
   withdraw_success: 
@@ -138,21 +156,22 @@ messages:
   help:
     - 'Plaese type /msg %nick% commands'
   commands:
-    - 'You can use following commands:'
     - '!balance - displays your current wallet balance'
     - '!address - displays %full_name% address where you can send your funds to the tip bot'
-    - '!withdraw <%full_name% address> - withdraws your whole wallet balance to specified address (you will be charged %withdrawal_fee%%short_name% withdrawal fee)'
+    - '!withdraw <%full_name% address> - withdraws your whole wallet balance to specified address (you will be charged %withdrawal_fee% %short_name% withdrawal fee)'
     - '!tip <nick> <amount> - sends the specified amount of %full_name% to the specified nickname'
     - '!rain <amount> [max] - splits amount coins between max users or the whole channel'
     - '!diff - displays the current network difficulty'
-    - '!networkhps - displays the current network hashpersec'    
+    - '!networkhps - displays the current network hashpersec'
     - '!block - displays the current network block'
     - '!info - displays the current network hashpersec, difficulty, block'
-    - '!ticker - displays the current AllCoin Coin Price/Volume'
-    - '!ticker2 - displays the current Cryptsy Coin Price/Volume'
+    - '!ticker - displays the current AllCoin Coin Price/Volume, You can also use it to search for a coin, eg. !ticker CZC'
+    - '!cryptsy - displays the current Cryptsy Coin Price/Volume'
+    - '!bittrex - displays the current BitTrex Coin Price/Volume, You can also use it to search for a coin, eg. !ticker CANN'
     - '!btc - displays the current BTC-e BitCoin Price/Volume'
     - '!joke - displays a joke'
     - '!random - displays a random quote'
+    - '!bot - displays info about the bot and where to download the source code.'
     - '!terms - displays terms and conditions for using %nick%'
   terms:
     - 'There are no fees to use %nick%, with the exception of %withdrawal_fee% %short_name% fee on withdrawals.'
