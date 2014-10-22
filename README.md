@@ -75,6 +75,21 @@ Enable or Disable the bot from saying your Allcoin coin price with !ticker.
  * `coin: DRS` Your coins short name
  * `url: https://www.allcoin.com/api2/pair/DRS_BTC` Your coins Allcoin api link
 
+## allcoin2
+* Options none
+  * `url: https://www.allcoin.com/api2/pair/` Dont touch this link 
+
+## bittrex
+Enable or Disable the bot from saying your Allcoin coin price with !ticker.
+* Options -
+ * `enabled: true or false`
+ * `coin: DOPE` Your coins short name
+ * `url: https://www.allcoin.com/api2/pair/DRS_DOPE` Your coins Allcoin api link
+
+## bittrex2
+* Options none
+  * `url: https://bittrex.com/api/v1.1/public/getmarketsummary?market=` Dont touch this link
+
 ## cryptsy
 Enable or Disable the bot from saying your Cryptsy coin price with !ticker2.
 * Options - 
@@ -103,7 +118,7 @@ server=1
 daemon=1
 rpcuser=<your username>
 rpcpassword=<your super secret password>
-rpcallowip=<your bot's ip address or just 127.0.0.1 if hosted on the same machine>
+rpcallowip=<your bots ip address or just 127.0.0.1 if hosted on the same machine>
 ```
 
 # Start The Bot
@@ -132,22 +147,22 @@ sudo apt-get install python-software-properties python g++ make nodejs
 
 ## Commands
 
-| **Command** | **Arguments**     | **Description**
-|-------------|-------------------|--------------------------------------------------------------------
-| `balance`   |                   | displays your current wallet balance
-| `address`   |                   | displays address where you can send your funds to the tip bot
-| `withdraw`  | `<address>`       | withdraws your whole wallet balance to specified address
-| `tip`       | `<nick> <amount>` | sends the specified amount of coins to the specified nickname
-| `rain`      | `<amount> [max]`  | sends the specified amount of coins to the channel
-| `networkhps`|                   | displays the current network hashpersec
-| `diff`      |                   | displays the current network difficulty
-| `block`     |                   | displays the current network block
-| `info`      |                   | displays the current network khps/difficulty/block
-| `ticker`    |                   | displays your current Allcoin coin price
-| `ticker2`   |                   | displays your current Cryptsy coin price
-| `btc`       |                   | displays the current BTC-e BTC price
-| `joke`      |                   | displays a random joke
-| `random`    |                   | displays a random quote
-| `help`      |                   | displays configured help message (by default similiar to this one)
-| `terms`     |                   | displays terms and conditions for using the tip bot
-
+| **Command** | **Arguments**     | **Description**                                                                   |
+|-------------|-------------------|-----------------------------------------------------------------------------------|
+| `balance`   |                   | displays your current wallet balance                                              |
+| `address`   |                   | displays address where you can send your funds to the tip bot                     |
+| `withdraw`  | `<address>`       | withdraws your whole wallet balance to specified address                          |
+| `tip`       | `<nick> <amount>` | sends the specified amount of coins to the specified nickname                     |
+| `rain`      | `<amount> [max]`  | sends the specified amount of coins to the channel                                |
+| `networkhps`|                   | displays the current network hashpersec with auto speed switch for Kh/s,Mh/s,Gh/s |
+| `diff`      |                   | displays the current network difficulty                                           |
+| `block`     |                   | displays the current network block                                                |
+| `info`      |                   | displays the current network hashpersec/difficulty/block auto switch              |
+| `ticker`    | `<coin> or none`  | displays the current Allcoin coin price use an arg, (!ticker DOPE)                |
+| `bittrex`   | `<coin> or none`  | displays the current BitTrex coin price use an arg, (!bittrex CANN)               |
+| `cryptsy`   |                   | displays the current Crypsty coin price                                           | 
+| `btc`       |                   | displays the current BTC-e BTC price                                              |
+| `joke`      |                   | displays a random joke                                                            | 
+| `random`    |                   | displays a random quote                                                           |
+| `help`      |                   | displays configured help message (by default similiar to this one)                |
+| `terms`     |                   | displays terms and conditions for using the tip bot                               |
