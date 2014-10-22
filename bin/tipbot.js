@@ -610,7 +610,7 @@ client.addListener('message', function(from, channel, message) {
             case 'info':
                 coin.getnetworkhashps(function(err, get_networkhps) {
                     if (err) {
-                        winston.error('Error in !networkhps command', err);
+                        winston.error('Error in !info command', err);
                         client.say(channel, settings.messages.error.expand({
                             name: from
                         }));
@@ -619,7 +619,7 @@ client.addListener('message', function(from, channel, message) {
                     var get_networkhps = typeof(get_networkhps) == 'object' ? get_networkhps.result : get_networkhps;
                     coin.getDifficulty(function(err, get_difficulty) {
                         if (err) {
-                            winston.error('Error in !getdiff command', err);
+                            winston.error('Error in !info command', err);
                             client.say(channel, settings.messages.error.expand({
                                 name: from
                             }));
@@ -635,10 +635,10 @@ client.addListener('message', function(from, channel, message) {
                                 return;
                             }
                             var get_blockcount = typeof(get_blockcount) == 'object' ? get_blockcount.result : get_blockcount;
-                            if (get_networkhps < 10000000) {
+                            if (get_networkhps < 1000000) {
                                 winston.info('khs', get_networkhps);
                                 client.say(channel, settings.messages.infok.expand({
-                                    networkhps: (get_networkhps / 100000).toFixed(2),
+                                    networkhps: (get_networkhps / 1000).toFixed(2),
                                     diff: get_difficulty,
                                     block: get_blockcount
                                 }));
@@ -651,13 +651,22 @@ client.addListener('message', function(from, channel, message) {
                                         block: get_blockcount
                                     }));
                                 } else {
-                                    if (get_networkhps < 10000000000) {
+                                    if (get_networkhps < 1000000000000) {
                                         winston.info('ghs', get_networkhps);
                                         client.say(channel, settings.messages.infog.expand({
                                             networkhps: (get_networkhps / 1000000000).toFixed(2),
                                             diff: get_difficulty,
                                             block: get_blockcount
                                         }));
+                                    } else {
+                                        if (get_networkhps < 1000000000000) {
+                                            winston.info('ths', get_networkhps);
+                                            client.say(channel, settings.messages.infot.expand({
+                                                networkhps: (get_networkhps / 1000000000).toFixed(2),
+                                                diff: get_difficulty,
+                                                block: get_blockcount
+                                            }));
+                                        }
                                     }
                                 }
                             }
@@ -676,10 +685,10 @@ client.addListener('message', function(from, channel, message) {
                         return;
                     }
                     var get_networkhps = typeof(get_networkhps) == 'object' ? get_networkhps.result : get_networkhps;
-                    if (get_networkhps < 10000000) {
+                    if (get_networkhps < 1000000) {
                         winston.info('khs', get_networkhps);
                         client.say(channel, settings.messages.networkhps.expand({
-                            networkhps: (get_networkhps / 100000).toFixed(2)
+                            networkhps: (get_networkhps / 1000).toFixed(2)
                         }));
                     } else {
                         if (get_networkhps < 1000000000) {
@@ -688,11 +697,18 @@ client.addListener('message', function(from, channel, message) {
                                 networkhps: (get_networkhps / 1000000).toFixed(2)
                             }));
                         } else {
-                            if (get_networkhps < 10000000000) {
+                            if (get_networkhps < 1000000000000) {
                                 winston.info('ghs', get_networkhps);
                                 client.say(channel, settings.messages.networghps.expand({
                                     networkhps: (get_networkhps / 1000000000).toFixed(2)
                                 }));
+                            } else {
+                                if (get_networkhps < 1000000000000000) {
+                                    winston.info('ths', get_networkhps);
+                                    client.say(channel, settings.messages.networthps.expand({
+                                        networkhps: (get_networkhps / 1000000000000).toFixed(2)
+                                    }));
+                                }
                             }
                         }
                     }
