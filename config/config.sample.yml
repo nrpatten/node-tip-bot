@@ -148,7 +148,7 @@ messages:
   infok: 'Current Networkhps: %networkhps% KH/s - Current Difficulty: %diff% - Current Block: %block%'
   infom: 'Current Networkhps: %networkhps% MH/s - Current Difficulty: %diff% - Current Block: %block%'
   infog: 'Current Networkhps: %networkhps% GH/s - Current Difficulty: %diff% - Current Block: %block%'
-  infog: 'Current Networkhps: %networkhps% TH/s - Current Difficulty: %diff% - Current Block: %block%'
+  infot: 'Current Networkhps: %networkhps% TH/s - Current Difficulty: %diff% - Current Block: %block%'
   bot:
     - '%nick% is a Node.js TipBot made by nrpatten and available at https://github.com/nrpatten/node-tip-bot'
   withdraw_success: 
