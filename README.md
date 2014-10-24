@@ -1,3 +1,5 @@
+### Node Tip Bot v1.0
+
 # Installation
 To install node-tip-bot simply clone this repo and install dependencies:
 ```bash
