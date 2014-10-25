@@ -155,7 +155,7 @@ messages:
   infom: 'Current Networkhps: %networkhps% MH/s - Current Difficulty: %diff% - Current Block: %block%'
   infog: 'Current Networkhps: %networkhps% GH/s - Current Difficulty: %diff% - Current Block: %block%'
   infot: 'Current Networkhps: %networkhps% TH/s - Current Difficulty: %diff% - Current Block: %block%'
-    gitpush:
+  gitpush:
     - '%name% Pushed a new commit to %repo% %message%'
     - '%url%'
   gitissue:
