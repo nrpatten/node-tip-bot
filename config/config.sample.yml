@@ -164,7 +164,7 @@ messages:
   gitissue_comment:
     - '%name% added a comment to (%title%) %url%'
   gitpull_request:
-    - '%name% %action% pull request #%number% %title% %url%'
+    - '%name% %action% pull request #%number% %headref%>%baseref% %title% %url%'
   bot:
     - '%nick% is a Node.js TipBot made by nrpatten and available at https://github.com/nrpatten/node-tip-bot'
   withdraw_success: 
