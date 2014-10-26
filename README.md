@@ -57,7 +57,7 @@ Basic coin settings.
 * **full_name** - full coin's name (eg. `Litecoin`)
 
 ## git
-Basic coin settings.
+Basic git settings.
 * ***enabled*** - `true` or `false`
 * ***host*** - `0.0.0.0` or ip of your server
 * ***port*** - `3420` or the posrt you want to use, make sure you forward the port
