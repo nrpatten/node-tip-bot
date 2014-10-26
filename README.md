@@ -1,4 +1,5 @@
-### Node Tip Bot v1.0
+# Node Tip Bot Stable
+-----------------------
 
 # Installation
 To install node-tip-bot simply clone this repo and install dependencies:
@@ -54,6 +55,22 @@ Basic coin settings.
 * **min_rain** - minimum amount of coins to make rain
 * **short_name** - short coin's name (eg. `LTC`)
 * **full_name** - full coin's name (eg. `Litecoin`)
+
+## git
+Basic coin settings.
+* ***enabled*** - `true` or `false`
+* ***host*** - `0.0.0.0` or ip of your server
+* ***port*** - `3420` or the posrt you want to use, make sure you forward the port
+* ***channels*** `#BotGitChannel` channel to post git events
+
+## adding webhooks
+In your github repo
+* Click Settings > Webhooks & Services > Add Webhook
+ * Payload URL your server ip (same as host) or domain eg.
+ * Payload URL `http://YourCallBackDomain.com:3420/github/callback`
+ * Which events would you like to trigger this webhook? Send me everything
+ * Tick Active
+ * Add webhook
 
 ## urlget
 Enable or Disable the bot from responding to URL's typed in the channel.
