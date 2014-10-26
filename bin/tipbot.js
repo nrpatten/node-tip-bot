@@ -73,6 +73,18 @@ if (settings.webadmin.enabled) {
     webadmin.app(settings.webadmin.port, coin, settings, winston);
 }
 
+// connect to the server
+winston.info('Connecting to the server...');
+
+var client = new irc.Client(settings.connection.host, settings.login.nickname, {
+    port: settings.connection.port,
+    secure: settings.connection.secure,
+    channels: settings.channels,
+    userName: settings.login.username,
+    realName: settings.login.realname,
+    debug: settings.connection.debug
+});
+
 // Github hook server
 if (settings.git.enabled) {
     //var githubhook = require('../node_modules/node-github-hook/index.js');
