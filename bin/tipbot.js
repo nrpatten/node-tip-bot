@@ -138,7 +138,9 @@ if (settings.git.enabled) {
             action: data.action,
             number: data.number,
             title: data.pull_request.title,
-            url: data.pull_request.url
+            url: data.pull_request.url,
+            headref: data.pull_request.head.ref,
+            baseref: data.pull_request.base.ref
         };
         for (var i = 0; i < settings.messages.gitpull_request.length; i++) {
             var msg = settings.messages.gitpull_request[i];
