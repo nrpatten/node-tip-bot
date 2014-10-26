@@ -132,6 +132,19 @@ if (settings.git.enabled) {
             client.say(settings.git.channels, msg.expand(issue_comment));
         }
     });
+    github.on('pull_request', function(repo, ref, data) {
+        pull_request = {
+            name: data.pull_request.user.login,
+            action: data.action,
+            number: data.number,
+            title: data.pull_request.title,
+            url: data.pull_request.url
+        };
+        for (var i = 0; i < settings.messages.gitpull_request.length; i++) {
+            var msg = settings.messages.gitpull_request[i];
+            client.say(settings.git.channels, msg.expand(pull_request));
+        }
+    });
 } else {
     return;
 }
