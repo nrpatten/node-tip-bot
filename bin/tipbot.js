@@ -126,7 +126,7 @@ if (settings.git.enabled) {
         issue_comment = {
             name: data.issue.user.login,
             title: data.issue.title,
-            url: data.issue.url
+            url: data.comment.html_url
         };
         for (var i = 0; i < settings.messages.gitissue_comment.length; i++) {
             var msg = settings.messages.gitissue_comment[i];
