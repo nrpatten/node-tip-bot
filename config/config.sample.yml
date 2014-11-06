@@ -58,6 +58,12 @@ bittrex:
   url: https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-dope
 bittrex2:
   url: https://bittrex.com/api/v1.1/public/getmarketsummary?market=
+git:
+  enabled: true
+  host: '0.0.0.0'
+  port: 3420
+  channels:
+    - '#BotGitChannel'
 commands:
   commands:
     pm: true
@@ -149,6 +155,16 @@ messages:
   infom: 'Current Networkhps: %networkhps% MH/s - Current Difficulty: %diff% - Current Block: %block%'
   infog: 'Current Networkhps: %networkhps% GH/s - Current Difficulty: %diff% - Current Block: %block%'
   infot: 'Current Networkhps: %networkhps% TH/s - Current Difficulty: %diff% - Current Block: %block%'
+  gitpush:
+    - '%name% Pushed a new commit to %repo% %message%'
+    - '%url%'
+  gitissue:
+    - '%name% %action% an issue (%title%) on %repo%'
+    - '%url%'
+  gitissue_comment:
+    - '%name% added a comment to (%title%) %url%'
+  gitpull_request:
+    - '%name% %action% pull request #%number% %headref%>%baseref% %title% %url%'
   bot:
     - '%nick% is a Node.js TipBot made by nrpatten and available at https://github.com/nrpatten/node-tip-bot'
   withdraw_success: 

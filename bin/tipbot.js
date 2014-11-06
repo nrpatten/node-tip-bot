@@ -85,6 +85,73 @@ var client = new irc.Client(settings.connection.host, settings.login.nickname, {
     debug: settings.connection.debug
 });
 
+// Github hook server
+if (settings.git.enabled) {
+    //var githubhook = require('../node_modules/node-github-hook/index.js');
+    var githubhook = require('githubhook');
+    var github = githubhook({
+        host: settings.git.host,
+        port: settings.git.port
+    });
+
+    github.listen();
+    winston.info('Github Hook Server Listening on port', github.port);
+    // Github push
+    github.on('push', function(repo, ref, data) {
+        push = {
+            name: data.head_commit.author.username,
+            repo: data.repository.name,
+            url: data.head_commit.url,
+            message: data.head_commit.message
+        };
+        for (var i = 0; i < settings.messages.gitpush.length; i++) {
+            var msg = settings.messages.gitpush[i];
+            client.say(settings.git.channels, msg.expand(push));
+        }
+    });
+    github.on('issues', function(repo, ref, data) {
+        issue = {
+            name: data.issue.user.login,
+            action: data.action,
+            repo: data.repository.name,
+            title: data.issue.title,
+            url: data.issue.url
+        };
+        for (var i = 0; i < settings.messages.gitissue.length; i++) {
+            var msg = settings.messages.gitissue[i];
+            client.say(settings.git.channels, msg.expand(issue));
+        }
+    });
+    github.on('issue_comment', function(repo, ref, data) {
+        issue_comment = {
+            name: data.issue.user.login,
+            title: data.issue.title,
+            url: data.comment.html_url
+        };
+        for (var i = 0; i < settings.messages.gitissue_comment.length; i++) {
+            var msg = settings.messages.gitissue_comment[i];
+            client.say(settings.git.channels, msg.expand(issue_comment));
+        }
+    });
+    github.on('pull_request', function(repo, ref, data) {
+        pull_request = {
+            name: data.pull_request.user.login,
+            action: data.action,
+            number: data.number,
+            title: data.pull_request.title,
+            url: data.pull_request.url,
+            headref: data.pull_request.head.ref,
+            baseref: data.pull_request.base.ref
+        };
+        for (var i = 0; i < settings.messages.gitpull_request.length; i++) {
+            var msg = settings.messages.gitpull_request[i];
+            client.say(settings.git.channels, msg.expand(pull_request));
+        }
+    });
+} else {
+    return;
+}
+
 // gets user's login status
 irc.Client.prototype.isIdentified = function(nickname, callback) {
     // request login status
