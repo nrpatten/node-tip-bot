@@ -76,6 +76,7 @@ In your github repo
 Enable or Disable the bot from responding to URL's typed in the channel.
 * Options - 
  * `enabled: true or false`
+ * ***channels*** `#BotChannel` channel to post URL responses
 
 ## joke
 Enable or Disable the bot from saying a joke with the !joke command.
