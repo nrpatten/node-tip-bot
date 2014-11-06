@@ -32,6 +32,8 @@ webadmin:
     admin: your-pasword
 urlget:
   enabled: true
+  channels:
+    - '#BotChannel'
 joke:
   enabled: true
   url: http://api.icndb.com/jokes/random
@@ -94,7 +96,8 @@ commands:
     channel: true
   rain: 
     pm: false
-    channel: true      
+    channel: true
+    rain_on_last_active: 120
   balance:
     pm: false
     channel: true
