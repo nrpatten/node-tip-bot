@@ -248,7 +248,9 @@ client.addListener('error', function(message) {
     winston.error('Received an error from IRC network: ', message);
 });
 
+var last_active = {};
 client.addListener('message', function(from, channel, message) {
+    last_active[from] = Date.now();
     var match = message.match(/^(!?)(\S+)/);
     if (match === null) return;
     var prefix = match[1];
@@ -324,6 +326,13 @@ client.addListener('message', function(from, channel, message) {
 
                     if (balance >= amount) {
                         client.getNames(channel, function(names) {
+                            if(settings.commands.rain.rain_on_last_active) {
+                            for (var i = names.length - 1; i >= 0; i--) {
+                                if(!last_active.hasOwnProperty(names[i]) || last_active[names[i]] + settings.commands.rain.rain_on_last_active * 1000 < Date.now()) {
+                                names.splice(i, 1);
+                                }
+                              };
+                            }
                             // remove tipper from the list
                             names.splice(names.indexOf(from), 1);
                             names.splice(names.indexOf(client.nick), 1);
