@@ -87,7 +87,6 @@ var client = new irc.Client(settings.connection.host, settings.login.nickname, {
 
 // Github hook server
 if (settings.git.enabled) {
-    //var githubhook = require('../node_modules/node-github-hook/index.js');
     var githubhook = require('githubhook');
     var github = githubhook({
         host: settings.git.host,
@@ -96,7 +95,7 @@ if (settings.git.enabled) {
 
     github.listen();
     winston.info('Github Hook Server Listening on port', github.port);
-    // Github push
+    // Github Push
     github.on('push', function(repo, ref, data) {
         push = {
             name: data.head_commit.author.username,
@@ -109,6 +108,7 @@ if (settings.git.enabled) {
             client.say(settings.git.channels, msg.expand(push));
         }
     });
+    // Github Issues
     github.on('issues', function(repo, ref, data) {
         issue = {
             name: data.issue.user.login,
@@ -122,6 +122,7 @@ if (settings.git.enabled) {
             client.say(settings.git.channels, msg.expand(issue));
         }
     });
+    // Github Issue comment
     github.on('issue_comment', function(repo, ref, data) {
         issue_comment = {
             name: data.issue.user.login,
@@ -133,6 +134,7 @@ if (settings.git.enabled) {
             client.say(settings.git.channels, msg.expand(issue_comment));
         }
     });
+    // Github Pull request
     github.on('pull_request', function(repo, ref, data) {
         pull_request = {
             name: data.pull_request.user.login,
