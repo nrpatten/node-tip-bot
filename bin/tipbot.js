@@ -710,6 +710,15 @@ client.addListener('message', function(from, channel, message) {
                                     diff: get_mininginfo.difficulty,
                                     block: get_mininginfo.blocks
                                 }));
+                            } else {
+                                if (get_mininginfo.networkhashp < 1000000000000000) {
+                                    winston.info('ths', get_mininginfo.networkhashp);
+                                    client.say(channel, settings.messages.infot.expand({
+                                        networkhps: (get_mininginfo.networkhashp / 1000000000000).toFixed(2),
+                                        diff: get_difficulty,
+                                        block: get_blockcount
+                                    }));
+                                }
                             }
                         }
                     }
@@ -743,6 +752,15 @@ client.addListener('message', function(from, channel, message) {
                                 client.say(channel, settings.messages.networghps.expand({
                                     networkhps: (get_mininginfo.networkhashps / 1000000000).toFixed(2)
                                 }));
+                            } else {
+                                if (get_mininginfo.networkhashp < 1000000000000000) {
+                                    winston.info('ths', get_mininginfo.networkhashp);
+                                    client.say(channel, settings.messages.networthps.expand({
+                                        networkhps: (get_mininginfo.networkhashp / 1000000000000).toFixed(2),
+                                        diff: get_difficulty,
+                                        block: get_blockcount
+                                    }));
+                                }
                             }
                         }
                     }
