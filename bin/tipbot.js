@@ -643,41 +643,41 @@ client.addListener('message', function(from, channel, message) {
                 break;
 
             case 'diff':
-                coin.getDifficulty(function(err, get_difficulty) {
+                coin.getmininginfo(function(err, get_mininginfo) {
                     if (err) {
-                        winston.error('Error in !getdiff command', err);
+                        winston.error('Error in !diff command', err);
                         client.say(channel, settings.messages.error.expand({
                             name: from
                         }));
                         return;
                     }
-                    var get_difficulty = typeof(get_difficulty) == 'object' ? get_difficulty.result : get_difficulty;
+                    var get_mininginfo = typeof(get_mininginfo) == 'object' ? get_mininginfo : get_mininginfo;
 
                     client.say(channel, settings.messages.getdiff.expand({
-                        diff: get_difficulty
+                        diff: get_mininginfo.difficulty
                     }));
                 });
                 break;
 
             case 'block':
-                coin.getblockcount(function(err, get_blockcount) {
+                coin.getmininginfo(function(err, get_mininginfo) {
                     if (err) {
-                        winston.error('Error in !getblock command', err);
+                        winston.error('Error in !block command', err);
                         client.say(channel, settings.messages.error.expand({
                             name: from
                         }));
                         return;
                     }
-                    var get_blockcount = typeof(get_blockcount) == 'object' ? get_blockcount.result : get_blockcount;
+                    var get_mininginfo = typeof(get_mininginfo) == 'object' ? get_mininginfo : get_mininginfo;
 
                     client.say(channel, settings.messages.getblock.expand({
-                        block: get_blockcount
+                        block: get_mininginfo.blocks
                     }));
                 });
                 break;
 
             case 'info':
-                coin.getnetworkhashps(function(err, get_networkhps) {
+                coin.getmininginfo(function(err, get_mininginfo) {
                     if (err) {
                         winston.error('Error in !info command', err);
                         client.say(channel, settings.messages.error.expand({
@@ -685,67 +685,39 @@ client.addListener('message', function(from, channel, message) {
                         }));
                         return;
                     }
-                    var get_networkhps = typeof(get_networkhps) == 'object' ? get_networkhps.result : get_networkhps;
-                    coin.getDifficulty(function(err, get_difficulty) {
-                        if (err) {
-                            winston.error('Error in !info command', err);
-                            client.say(channel, settings.messages.error.expand({
-                                name: from
+                    var get_mininginfo = typeof(get_mininginfo) == 'object' ? get_mininginfo : get_mininginfo;
+
+                    if (get_mininginfo.networkhashps < 10000000) {
+                        winston.info('khs', get_mininginfo.networkhashps);
+                        client.say(channel, settings.messages.infok.expand({
+                            networkhps: (get_mininginfo.networkhashps / 100000).toFixed(2),
+                            diff: get_mininginfo.difficulty,
+                            block: get_mininginfo.blocks
+                        }));
+                    } else {
+                        if (get_mininginfo.networkhashps < 1000000000) {
+                            winston.info('mhs', get_mininginfo.networkhashps);
+                            client.say(channel, settings.messages.infom.expand({
+                                networkhps: (get_mininginfo.networkhashps / 1000000).toFixed(2),
+                                diff: get_mininginfo.difficulty,
+                                block: get_mininginfo.blocks
                             }));
-                            return;
+                        } else {
+                            if (get_mininginfo.networkhashps < 10000000000) {
+                                winston.info('ghs', get_mininginfo.networkhashps);
+                                client.say(channel, settings.messages.infog.expand({
+                                    networkhps: (get_mininginfo.networkhashps / 1000000000).toFixed(2),
+                                    diff: get_mininginfo.difficulty,
+                                    block: get_mininginfo.blocks
+                                }));
+                            }
                         }
-                        var get_difficulty = typeof(get_difficulty) == 'object' ? get_difficulty.result : get_difficulty;
-                        coin.getblockcount(function(err, get_blockcount) {
-                            if (err) {
-                                winston.error('Error in !info command', err);
-                                client.say(channel, settings.messages.error.expand({
-                                    name: from
-                                }));
-                                return;
-                            }
-                            var get_blockcount = typeof(get_blockcount) == 'object' ? get_blockcount.result : get_blockcount;
-                            if (get_networkhps < 1000000) {
-                                winston.info('khs', get_networkhps);
-                                client.say(channel, settings.messages.infok.expand({
-                                    networkhps: (get_networkhps / 1000).toFixed(2),
-                                    diff: get_difficulty,
-                                    block: get_blockcount
-                                }));
-                            } else {
-                                if (get_networkhps < 1000000000) {
-                                    winston.info('mhs', get_networkhps);
-                                    client.say(channel, settings.messages.infom.expand({
-                                        networkhps: (get_networkhps / 1000000).toFixed(2),
-                                        diff: get_difficulty,
-                                        block: get_blockcount
-                                    }));
-                                } else {
-                                    if (get_networkhps < 1000000000000) {
-                                        winston.info('ghs', get_networkhps);
-                                        client.say(channel, settings.messages.infog.expand({
-                                            networkhps: (get_networkhps / 1000000000).toFixed(2),
-                                            diff: get_difficulty,
-                                            block: get_blockcount
-                                        }));
-                                    } else {
-                                        if (get_networkhps < 1000000000000) {
-                                            winston.info('ths', get_networkhps);
-                                            client.say(channel, settings.messages.infot.expand({
-                                                networkhps: (get_networkhps / 1000000000).toFixed(2),
-                                                diff: get_difficulty,
-                                                block: get_blockcount
-                                            }));
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                    });
+                    }
                 });
                 break;
 
             case 'networkhps':
-                coin.getnetworkhashps(function(err, get_networkhps) {
+                coin.getmininginfo(function(err, get_mininginfo) {
                     if (err) {
                         winston.error('Error in !networkhps command', err);
                         client.say(channel, settings.messages.error.expand({
@@ -753,31 +725,24 @@ client.addListener('message', function(from, channel, message) {
                         }));
                         return;
                     }
-                    var get_networkhps = typeof(get_networkhps) == 'object' ? get_networkhps.result : get_networkhps;
-                    if (get_networkhps < 1000000) {
-                        winston.info('khs', get_networkhps);
+                    var get_mininginfo = typeof(get_mininginfo) == 'object' ? get_mininginfo : get_mininginfo;
+                    if (get_mininginfo.networkhashps < 10000000) {
+                        winston.info('khs', get_mininginfo.networkhashps);
                         client.say(channel, settings.messages.networkhps.expand({
-                            networkhps: (get_networkhps / 1000).toFixed(2)
+                            networkhps: (get_mininginfo.networkhashps / 100000).toFixed(2)
                         }));
                     } else {
-                        if (get_networkhps < 1000000000) {
-                            winston.info('mhs', get_networkhps);
+                        if (get_mininginfo.networkhashps < 1000000000) {
+                            winston.info('mhs', get_mininginfo.networkhashps);
                             client.say(channel, settings.messages.networmhps.expand({
-                                networkhps: (get_networkhps / 1000000).toFixed(2)
+                                networkhps: (get_mininginfo.networkhashps / 1000000).toFixed(2)
                             }));
                         } else {
-                            if (get_networkhps < 1000000000000) {
-                                winston.info('ghs', get_networkhps);
+                            if (get_mininginfo.networkhashps < 10000000000) {
+                                winston.info('ghs', get_mininginfo.networkhashps);
                                 client.say(channel, settings.messages.networghps.expand({
-                                    networkhps: (get_networkhps / 1000000000).toFixed(2)
+                                    networkhps: (get_mininginfo.networkhashps / 1000000000).toFixed(2)
                                 }));
-                            } else {
-                                if (get_networkhps < 1000000000000000) {
-                                    winston.info('ths', get_networkhps);
-                                    client.say(channel, settings.messages.networthps.expand({
-                                        networkhps: (get_networkhps / 1000000000000).toFixed(2)
-                                    }));
-                                }
                             }
                         }
                     }
