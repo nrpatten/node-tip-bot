@@ -728,10 +728,10 @@ client.addListener('message', function(from, channel, message) {
                                             block: get_blockcount
                                         }));
                                     } else {
-                                        if (get_networkhps < 1000000000000) {
+                                        if (get_networkhps < 1000000000000000) {
                                             winston.info('ths', get_networkhps);
                                             client.say(channel, settings.messages.infot.expand({
-                                                networkhps: (get_networkhps / 1000000000).toFixed(2),
+                                                networkhps: (get_networkhps / 1000000000000).toFixed(2),
                                                 diff: get_difficulty,
                                                 block: get_blockcount
                                             }));
