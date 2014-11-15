@@ -308,13 +308,6 @@ client.addListener('message', function(from, channel, message) {
                     return;
                 }
 
-                if(random) {
-                   var min = settings.coin.min_rain;
-                   var maxAmount = amount;
-                   amount = Math.floor(Math.random() * (maxAmount - min + 1)) + min;
-                
-                }
-
                 if (isNaN(max) || max < 1) {
                     max = false;
                 } else {
