@@ -18,7 +18,6 @@ rpc:
   port: rpc-port
   user: rpc-username
   pass: rpc-password
-  prefix: ''
 coin:
   withdrawal_fee: 2 
   min_withdraw: 10
