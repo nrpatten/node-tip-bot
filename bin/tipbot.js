@@ -315,7 +315,7 @@ client.addListener('message', function(from, channel, message) {
                 } else {
                     max = Math.floor(max);
                 }
-                coin.getBalance(settings.rpc.prefix + from.toLowerCase(), settings.coin.min_confirmations, function(err, balance) {
+                coin.getBalance(from.toLowerCase(), settings.coin.min_confirmations, function(err, balance) {
                     if (err) {
                         winston.error('Error in !rain command.', err);
                         client.say(channel, settings.messages.error.expand({
@@ -352,7 +352,7 @@ client.addListener('message', function(from, channel, message) {
                                 return;
                             }
                             for (var i = 0; i < names.length; i++) {
-                                coin.move(settings.rpc.prefix + from.toLowerCase(), settings.rpc.prefix + names[i].toLowerCase(), amount / max, function(err, reply) {
+                                coin.move(from.toLowerCase(), names[i].toLowerCase(), amount / max, function(err, reply) {
                                     if (err || !reply) {
                                         winston.error('Error in !tip command', err);
                                         return;
@@ -591,7 +591,7 @@ client.addListener('message', function(from, channel, message) {
                     return;
                 }
                 // check balance with min. 5 confirmations
-                coin.getBalance(settings.rpc.prefix + from.toLowerCase(), settings.coin.min_confirmations, function(err, balance) {
+                coin.getBalance(from.toLowerCase(), settings.coin.min_confirmations, function(err, balance) {
                     if (err) {
                         winston.error('Error in !tip command.', err);
                         client.say(channel, settings.messages.error.expand({
@@ -601,7 +601,7 @@ client.addListener('message', function(from, channel, message) {
                     }
                     var balance = typeof(balance) == 'object' ? balance.result : balance;
                     if (balance >= amount) {
-                        coin.send('move', settings.rpc.prefix + from.toLowerCase(), settings.rpc.prefix + to.toLowerCase(), amount, function(err, reply) {
+                        coin.send('move', from.toLowerCase(), to.toLowerCase(), amount, function(err, reply) {
                             if (err || !reply) {
                                 winston.error('Error in !tip command', err);
                                 client.say(channel, settings.messages.error.expand({
