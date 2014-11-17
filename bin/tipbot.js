@@ -366,7 +366,7 @@ client.addListener('message', function(from, channel, message) {
                             client.say(channel, settings.messages.rain.expand({
                                 name: from,
                                 amount: amount / max,
-                                list: whole_channel ? 'the whole channel' : names.join(', ')
+                                list: (whole_channel && !settings.commands.rain.rain_on_last_active) ? 'the whole channel' : names.join(', ')
                             }));
                         });
                     } else {
