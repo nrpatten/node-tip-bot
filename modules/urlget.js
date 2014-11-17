@@ -29,7 +29,7 @@ if (settings.urlget.enabled) {
                 var $ = cheerio.load(body);
                 if ($('title').text()) {
                     winston.info(user, trim($('title').text()));
-                    client.say(channel, trim($('title').text()));
+                    client.say(settings.urlget.channels, trim($('title').text()));
                 }
             } else {
                 winston.info('URL Not found or timed out');

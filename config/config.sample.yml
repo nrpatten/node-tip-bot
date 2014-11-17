@@ -23,6 +23,7 @@ coin:
   min_withdraw: 10
   min_confirmations: 3
   min_tip: 1
+  min_rain: 1
   short_name: coin-shortname
   full_name: coin-name
 webadmin:
@@ -32,6 +33,8 @@ webadmin:
     admin: your-pasword
 urlget:
   enabled: true
+  channels:
+    - '#BotChannel'
 joke:
   enabled: true
   url: http://api.icndb.com/jokes/random
@@ -94,7 +97,8 @@ commands:
     channel: true
   rain: 
     pm: false
-    channel: true      
+    channel: true
+    rain_on_last_active: 120
   balance:
     pm: false
     channel: true
@@ -141,7 +145,7 @@ messages:
   withdraw_too_small: 'Sorry %name%, you need to withdraw at least %min_withdraw% %short_name% (you have %balance% %short_name%)'
   invalid_address: 'Sorry %name%, the address you specified is invalid (%address%).'
   tip_too_small: 'Sorry %from%, your tip to %to% (%amount% %short_name%) is too small (min. %min_tip% %short_name%).'
-  rain_too_small: 'Sorry %from%, your rain (%amount% %short_name%) is too small (min. %min_rain% %short_name%). Increase the value or decrease max wet users.' 
+  rain_too_small: 'Sorry %from%, your rain (%amount% %short_name%) is too small (min. %min_rain% %short_name%). Increase the tip value or decrease max set users.' 
   tip_self: "Sorry %name%, you can't tip yourself!"
   invalid_amount: 'Sorry %name%, "%amount%" is not a correct amount.'
   rain: '%name% rained %amount% %short_name% upon %list%.' 
@@ -178,7 +182,7 @@ messages:
     - '!address - displays %full_name% address where you can send your funds to the tip bot'
     - '!withdraw <%full_name% address> - withdraws your whole wallet balance to specified address (you will be charged %withdrawal_fee% %short_name% withdrawal fee)'
     - '!tip <nick> <amount> - sends the specified amount of %full_name% to the specified nickname'
-    - '!rain <amount> [max] - splits amount coins between max users or the whole channel'
+    - '!rain <amount> [max] - splits amount of coins between max users or the whole channel'
     - '!diff - displays the current network difficulty'
     - '!networkhps - displays the current network hashpersec'
     - '!block - displays the current network block'
