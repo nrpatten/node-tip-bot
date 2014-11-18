@@ -148,7 +148,6 @@ if (settings.git.enabled) {
         }
     });
 } else {
-    return;
 }
 
 // gets user's login status
