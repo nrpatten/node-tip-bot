@@ -25,7 +25,7 @@ var settings = yaml.load(fs.readFileSync('./config/config.yml', 'utf-8'));
 
 // Joke/random URL
 var joke = (settings.joke.url),
-    random = (settings.random.url);
+    quote = (settings.quote.url);
 
 // Ticker Options/Market URL change URL in config.yml
 var allcoin = (settings.allcoin.url),
@@ -532,12 +532,12 @@ client.addListener('message', function(from, channel, message) {
                 }
                 break;
 
-            case 'random':
-                if (settings.random.enabled) {
+            case 'quote':
+                if (settings.quote.enabled) {
                     var user = from.toLowerCase();
-                    tipbot.sendCustomRequest(random, function(data, err) {
+                    tipbot.sendCustomRequest(quote, function(data, err) {
                         if (err) {
-                            winston.error('Error in !random command.', err);
+                            winston.error('Error in !quote command.', err);
                             client.say(channel, settings.messages.error.expand({
                                 name: from
                             }));
@@ -545,7 +545,7 @@ client.addListener('message', function(from, channel, message) {
                         }
                         var info = data;
                         winston.info(user, 'Fetched Random Quote', info.quote);
-                        client.say(channel, settings.messages.random.expand({
+                        client.say(channel, settings.messages.quote.expand({
                             name: user,
                             random: info.quote
                         }));
