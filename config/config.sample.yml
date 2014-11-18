@@ -38,7 +38,7 @@ urlget:
 joke:
   enabled: true
   url: http://api.icndb.com/jokes/random
-random:
+quote:
   enabled: true
   url: http://www.iheartquotes.com/api/v1/random?format=json&max_lines=1
 allcoin:
@@ -80,7 +80,7 @@ commands:
   joke:
     pm: false
     channel: true
-  random:
+  quote:
     pm: false
     channel: true
   ticker:
@@ -134,7 +134,7 @@ messages:
   bittrexerr: '%name% There was an error in the request either the AIP is down or %coin% dose not exist on BitTrex'
   btc: '%name% The current %coin% price at BTC-e. BTC: $%price_dollar% - Volume: %volume% BTC'
   joke: '%name% - %joke%'
-  random: '%name% - %random%'
+  quote: '%name% - %random%'
   error: 'Sorry %name%, something went wrong.'
   no_funds: 'Sorry %name%, you dont have enough funds (you are %short% %short_name% short)'
   not_identified: '%name%: You need to be identified with NickServ to use this command.'
@@ -192,7 +192,7 @@ messages:
     - '!bittrex - displays the current BitTrex Coin Price/Volume, You can also use it to search for a coin, eg. !ticker CANN'
     - '!btc - displays the current BTC-e BitCoin Price/Volume'
     - '!joke - displays a joke'
-    - '!random - displays a random quote'
+    - '!quote - displays a random quote'
     - '!bot - displays info about the bot and where to download the source code.'
     - '!terms - displays terms and conditions for using %nick%'
   terms:
