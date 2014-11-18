@@ -76,14 +76,15 @@ In your github repo
 Enable or Disable the bot from responding to URL's typed in the channel.
 * Options - 
  * `enabled: true or false`
+ * ***channels*** `#BotChannel` channel to post URL responses
 
 ## joke
 Enable or Disable the bot from saying a joke with the !joke command.
 * Options - 
  * `enabled: true or false`
 
-## random
-Enable or Disable the bot from saying a random quote with the !random command.
+## quote
+Enable or Disable the bot from saying a random quote with the !quote command.
 * Options - 
  * `enabled: true or false`
 
@@ -182,6 +183,6 @@ sudo apt-get install python-software-properties python g++ make nodejs
 | `cryptsy`   |                   | displays the current Crypsty coin price                                           | 
 | `btc`       |                   | displays the current BTC-e BTC price                                              |
 | `joke`      |                   | displays a random joke                                                            | 
-| `random`    |                   | displays a random quote                                                           |
+| `quote`     |                   | displays a random quote                                                           | 
 | `help`      |                   | displays configured help message (by default similiar to this one)                |
 | `terms`     |                   | displays terms and conditions for using the tip bot                               |
