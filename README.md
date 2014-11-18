@@ -183,7 +183,6 @@ sudo apt-get install python-software-properties python g++ make nodejs
 | `cryptsy`   |                   | displays the current Crypsty coin price                                           | 
 | `btc`       |                   | displays the current BTC-e BTC price                                              |
 | `joke`      |                   | displays a random joke                                                            | 
-| `quote`     |                   | displays a random quote   
-|
+| `quote`     |                   | displays a random quote                                                           | 
 | `help`      |                   | displays configured help message (by default similiar to this one)                |
 | `terms`     |                   | displays terms and conditions for using the tip bot                               |
