@@ -5,7 +5,7 @@ var settings = yaml.load(fs.readFileSync('./config/config.yml', 'utf-8'));
 
 if (settings.urlget.enabled) {
     exports.filter = function(from, channel, message) {
-        if (message.match(urlRE)) {
+        if (message.match(urlRE) && channel.match(settings.urlget.channels)) {
             return 1;
         } else {
             return 0;
