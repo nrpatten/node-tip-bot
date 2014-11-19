@@ -33,7 +33,7 @@ webadmin:
 urlget:
   enabled: true
   channels:
-  - '#BotChannel'
+    - '#BotChannel'
 joke:
   enabled: true
   url: http://api.icndb.com/jokes/random
