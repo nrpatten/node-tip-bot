@@ -5,7 +5,7 @@ var settings = yaml.load(fs.readFileSync('./config/config.yml', 'utf-8'));
 
 if (settings.urlget.enabled) {
     exports.filter = function(from, channel, message) {
-        if (message.match(urlRE)) {
+        if (message.match(urlRE) && channel.match(settings.urlget.channels)) {
             return 1;
         } else {
             return 0;
@@ -28,8 +28,7 @@ if (settings.urlget.enabled) {
                 var cheerio = require('cheerio');
                 var $ = cheerio.load(body);
                 if ($('title').text()) {
-                    winston.info(user, trim($('title').text()));
-                    client.say(channel, trim($('title').text()));
+                    client.say(settings.urlget.channels, trim($('title').text()));
                 }
             } else {
                 winston.info('URL Not found or timed out');
