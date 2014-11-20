@@ -1,6 +1,11 @@
 # Node Tip Bot Stable
 -----------------------
 
+# Donations
+* BTC `1B4LKCoH6mh4nMk4pgCArK9Apcnm8uLCto`
+* LTC `LaFX9Fbpqnasdw4fCFTtpsM3GLcy6WNnfP`
+* DOGE `DNv5GfUYnvqY9iTnKx531dzsG8ThoBd7ep`
+
 # Installation
 To install node-tip-bot simply clone this repo and install dependencies:
 ```bash
