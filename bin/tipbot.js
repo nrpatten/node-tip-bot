@@ -372,6 +372,7 @@ client.addListener('message', function(from, channel, message) {
                             }));
                         });
                     } else {
+                        locks[from.toLowerCase()] = null;
                         winston.info('%s tried to tip %s %d, but has only %d', from, to, amount, balance);
                         client.say(channel, settings.messages.no_funds.expand({
                             name: from,
