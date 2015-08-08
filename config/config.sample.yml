@@ -104,7 +104,7 @@ commands:
     pm: false
     channel: true
   address:
-    pm: fales
+    pm: false
     channel: true
   terms:
     pm: false
