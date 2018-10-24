@@ -9,7 +9,7 @@
     "winston": "~0.8.1",
     "node-altcoin": "0.1.2",
     "swig": "^1.3.2",
-    "express": "3.4.8",
+    "express": "4.15.5",
     "node-tipbot-api": "0.0.5",
     "request": "2.82.0",
     "node-regexp": "0.1.1",
