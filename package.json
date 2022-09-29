@@ -5,21 +5,24 @@
   "main": "bin/tipbot",
   "dependencies": {
     "irc": "~0.3.6",
-    "js-yaml": "~3.2.2",
+    "js-yaml": "~3.13.1",
     "winston": "~0.8.1",
     "node-altcoin": "0.1.2",
     "swig": "^1.3.2",
-    "express": "3.4.8",
+    "express": "4.16.0",
     "node-tipbot-api": "0.0.5",
-    "request": "2.82.0",
+    "request": "2.88.0",
     "node-regexp": "0.1.1",
     "cheerio": "0.20.0",
-    "githubhook": "1.1.3"
+    "githubhook": "1.1.3",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/tipbot"
+    "start": "node bin/tipbot",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -42,5 +45,6 @@
     "rpc",
     "ticker",
     "bot"
-  ]
+  ],
+  "snyk": true
 }
